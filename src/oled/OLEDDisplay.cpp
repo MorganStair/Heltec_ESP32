@@ -490,6 +490,7 @@ void OLEDDisplay::drawString(int16_t xMove, int16_t yMove, String strUser) {
     textPart = strtok(NULL, "\n");
   }
   free(text);
+  yield();
 }
 //void OLEDDisplay::drawdata(int16_t xMove, int16_t yMove, int16_t Num) {
 //  uint16_t lineHeight = pgm_read_byte(fontData + HEIGHT_POS);

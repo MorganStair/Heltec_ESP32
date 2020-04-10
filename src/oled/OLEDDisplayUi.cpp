@@ -203,6 +203,7 @@ int8_t OLEDDisplayUi::update(){
     this->state.lastUpdate = frameStart;
     this->tick();
   }
+  yield();
   return this->updateInterval - (millis() - frameStart);
 }
 
@@ -241,6 +242,7 @@ void OLEDDisplayUi::tick() {
   }
   this->drawOverlays();
   this->display->display();
+  yield();
 }
 
 void OLEDDisplayUi::resetState() {

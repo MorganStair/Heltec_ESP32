@@ -68,9 +68,9 @@ class SSD1306Wire : public OLEDDisplay {
     }
 
     void display(void) {
-		initI2cIfNeccesary();
-		const int x_offset = (128 - this->width()) / 2;
-		#ifdef OLEDDISPLAY_DOUBLE_BUFFER
+      initI2cIfNeccesary();
+      const int x_offset = (128 - this->width()) / 2;
+      #ifdef OLEDDISPLAY_DOUBLE_BUFFER
         uint8_t minBoundY = UINT8_MAX;
         uint8_t maxBoundY = 0;
 
@@ -91,7 +91,6 @@ class SSD1306Wire : public OLEDDisplay {
            }
            buffer_back[pos] = buffer[pos];
          }
-         yield();
         }
 
         // If the minBoundY wasn't updated
@@ -123,7 +122,6 @@ class SSD1306Wire : public OLEDDisplay {
               k = 0;
             }
           }
-          yield();
         }
 
         if (k != 0) {
@@ -156,6 +154,7 @@ class SSD1306Wire : public OLEDDisplay {
           Wire.endTransmission();
         }
       #endif
+      yield();
     }
 
     void setI2cAutoInit(bool doI2cAutoInit) {
