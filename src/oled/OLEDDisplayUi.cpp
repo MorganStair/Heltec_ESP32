@@ -66,6 +66,7 @@ void OLEDDisplayUi::setAutoTransitionBackwards(){
 }
 void OLEDDisplayUi::setTimePerFrame(uint16_t time){
   this->ticksPerFrame = (uint16_t) ( (float) time / (float) updateInterval);
+  if (this->ticksPerFrame < 1) this->ticksPerFrame = 1;
 }
 void OLEDDisplayUi::setTimePerTransition(uint16_t time){
   this->ticksPerTransition = (uint16_t) ( (float) time / (float) updateInterval);

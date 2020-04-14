@@ -199,6 +199,17 @@ class OLEDDisplayUi {
      */
     void setTimePerFrame(uint16_t time);
 
+    void msecsPerFrame(unsigned long msecs)
+    {
+      ticksPerFrame = msecs / updateInterval;
+      if (ticksPerFrame < 1) ticksPerFrame = 1;
+    }
+    
+    unsigned long msecsPerFrame()
+    {
+      return updateInterval * ticksPerFrame;
+    }
+
     /**
      * Set the approx. time a transition will take
      */
